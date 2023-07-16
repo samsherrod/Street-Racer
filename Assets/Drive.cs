@@ -68,7 +68,7 @@ public class Drive : MonoBehaviour
         brakeLight.SetActive(false);
     }
 
-    void CalculateEngineSound()
+    public void CalculateEngineSound()
     {
         float gearPercentage = (1 / (float)numGears);
         float targetGearFactor = Mathf.InverseLerp(gearPercentage * currentGear, gearPercentage * (currentGear + 1),
@@ -96,7 +96,7 @@ public class Drive : MonoBehaviour
     /// clamping the values accel values between -1 and 1 and then multiplies it by the torque
     /// to get the wheel collider's motor torque    /// </summary>
     /// <param name="accel"></param>
-    void Go(float accel, float steer, float brake)
+    public void Go(float accel, float steer, float brake)
     {
         // acts as a kind of percentage amount of the full torque that can be added
         // the longer the up and down arrows are holed to down, the more the accelleration
@@ -138,7 +138,7 @@ public class Drive : MonoBehaviour
         }
     }
 
-    void CheckForSkid()
+    public void CheckForSkid()
     {
         int numSkidding = 0;
         for (int i = 0; i < 4; i++)
@@ -166,19 +166,5 @@ public class Drive : MonoBehaviour
         {
             skidSound.Stop();
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        // use the up and down arrow keys to add accelleration to the wheel collider
-        float a = Input.GetAxis("Vertical");
-        float s = Input.GetAxis("Horizontal");
-        float b = Input.GetAxis("Jump");
-
-        Go(a, s, b);
-
-        CheckForSkid();
-        CalculateEngineSound();
     }
 }
