@@ -18,6 +18,8 @@ public class Drive : MonoBehaviour
     public ParticleSystem smokePrefab;
     ParticleSystem[] skidSmoke = new ParticleSystem[4];
 
+    public GameObject brakeLight;
+
     /// <summary>
     /// Creates a skid effect that intatiates the skidTrailPrefab. Its position is at the base of the wheel
     /// and is childed to its wheel collider
@@ -50,6 +52,8 @@ public class Drive : MonoBehaviour
             skidSmoke[i] = Instantiate(smokePrefab);
             skidSmoke[i].Stop();
         }
+
+        brakeLight.SetActive(false);
     }
 
     /// <summary>
@@ -66,6 +70,12 @@ public class Drive : MonoBehaviour
         accel = Mathf.Clamp(accel, -1, 1);
         steer = Mathf.Clamp(steer, -1, 1) * maxSteerAngle;
         brake = Mathf.Clamp(brake, 0, 1) * maxBrakeTorque;
+
+        if (brake != 0)
+            brakeLight.SetActive(true);
+        else 
+            brakeLight.SetActive(false);
+
         float thrustTorque = accel * torque;
 
         for (int i = 0; i < 4; i++)
@@ -99,17 +109,17 @@ public class Drive : MonoBehaviour
             if (Mathf.Abs(wheelHit.forwardSlip) >= 0.4 || Mathf.Abs(wheelHit.sidewaysSlip) >= 0.4f)
             {
                 numSkidding++;
-                if (!skidSound.isPlaying) skidSound.Play();
+                if (!skidSound.isPlaying)
+                    skidSound.Play();
+
                 //StartSkidTrail(i);
 
                 // positions smoke particle effects
                 skidSmoke[i].transform.position = WCs[i].transform.position - WCs[i].transform.up * WCs[i].radius;
                 skidSmoke[i].Emit(1);
             }
-            else
-            {
+            //else
                 //EndSkidTrail(i);
-            }
         }
 
         if (numSkidding == 0 && skidSound.isPlaying)
