@@ -399,6 +399,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 76.088005, y: -30.000002, z: 0}
+--- !u!4 &948245789 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 106620915286294095, guid: d60eb09d1e477cc45becfc0cbd367395,
+    type: 3}
+  m_PrefabInstance: {fileID: 106620914697748695}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -475,12 +481,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.17364816, y: 0, z: 0, w: 0.9848078}
-  m_LocalPosition: {x: 0, y: 4, z: -6.5}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.17364816, y: -0, z: -0, w: 0.9848078}
+  m_LocalPosition: {x: 0, y: 3.22, z: -2.4404895}
+  m_LocalScale: {x: 1, y: 0.8371136, z: 0.40505192}
   m_Children: []
-  m_Father: {fileID: 106620914697748699}
-  m_RootOrder: 2
+  m_Father: {fileID: 948245789}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 20, y: 0, z: 0}
 --- !u!1 &974575110
 GameObject:
@@ -1014,12 +1020,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   circuit: {fileID: 1584066789}
   steeringSensitivity: 0.001
---- !u!4 &106620914697748699 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 106620914291504849, guid: d60eb09d1e477cc45becfc0cbd367395,
-    type: 3}
-  m_PrefabInstance: {fileID: 106620914697748695}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6434567987414876194
 GameObject:
   m_ObjectHideFlags: 0
