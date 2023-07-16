@@ -1910,6 +1910,14 @@ PrefabInstance:
       propertyPath: skidmarksController
       value: 
       objectReference: {fileID: 1760890822}
+    - target: {fileID: 413442950, guid: d60eb09d1e477cc45becfc0cbd367395, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.49
+      objectReference: {fileID: 0}
+    - target: {fileID: 413442950, guid: d60eb09d1e477cc45becfc0cbd367395, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.563
+      objectReference: {fileID: 0}
     - target: {fileID: 1361416572, guid: d60eb09d1e477cc45becfc0cbd367395, type: 3}
       propertyPath: skidmarksController
       value: 
@@ -1922,6 +1930,11 @@ PrefabInstance:
       propertyPath: skidmarksController
       value: 
       objectReference: {fileID: 1760890822}
+    - target: {fileID: 106620914071757870, guid: d60eb09d1e477cc45becfc0cbd367395,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 106620914291504849, guid: d60eb09d1e477cc45becfc0cbd367395,
         type: 3}
       propertyPath: m_RootOrder
@@ -1987,10 +2000,20 @@ PrefabInstance:
       propertyPath: circuit
       value: 
       objectReference: {fileID: 1584066789}
-    - target: {fileID: 106620914697748697, guid: d60eb09d1e477cc45becfc0cbd367395,
+    - target: {fileID: 106620914863106589, guid: d60eb09d1e477cc45becfc0cbd367395,
         type: 3}
-      propertyPath: steeringSensitivity
-      value: 0.02
+      propertyPath: m_LocalPosition.y
+      value: -0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 106620915002401520, guid: d60eb09d1e477cc45becfc0cbd367395,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 106620915107777861, guid: d60eb09d1e477cc45becfc0cbd367395,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d60eb09d1e477cc45becfc0cbd367395, type: 3}
