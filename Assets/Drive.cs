@@ -15,6 +15,9 @@ public class Drive : MonoBehaviour
     public Transform skidTrailPrefab;
     Transform[] skidTrails = new Transform[4];
 
+    public ParticleSystem smokePrefab;
+    ParticleSystem[] skidSmoke = new ParticleSystem[4];
+
     /// <summary>
     /// Creates a skid effect that intatiates the skidTrailPrefab. Its position is at the base of the wheel
     /// and is childed to its wheel collider
@@ -42,6 +45,11 @@ public class Drive : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        for (int i = 0; i < 4; i++)
+        {
+            skidSmoke[i] = Instantiate(smokePrefab);
+            skidSmoke[i].Stop();
+        }
     }
 
     /// <summary>
@@ -93,6 +101,10 @@ public class Drive : MonoBehaviour
                 numSkidding++;
                 if (!skidSound.isPlaying) skidSound.Play();
                 //StartSkidTrail(i);
+
+                // positions smoke particle effects
+                skidSmoke[i].transform.position = WCs[i].transform.position - WCs[i].transform.up * WCs[i].radius;
+                skidSmoke[i].Emit(1);
             }
             else
             {

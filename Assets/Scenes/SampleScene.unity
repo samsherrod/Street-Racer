@@ -127,7 +127,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 106620914697748695}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &169383138
+--- !u!114 &169383140
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -422,7 +422,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 106620914697748695}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1361416570
+--- !u!114 &1361416572
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -442,7 +442,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 106620914697748695}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1571261546
+--- !u!114 &1571261548
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -506,7 +506,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 106620914697748695}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1784132960
+--- !u!114 &1784132962
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -542,6 +542,12 @@ PrefabInstance:
       propertyPath: skidSound
       value: 
       objectReference: {fileID: 106620914697748697}
+    - target: {fileID: 106620914291504848, guid: d60eb09d1e477cc45becfc0cbd367395,
+        type: 3}
+      propertyPath: smokePrefab
+      value: 
+      objectReference: {fileID: 8802029457621024196, guid: ea1337e6b73b4ad459ebde919d5c1a78,
+        type: 3}
     - target: {fileID: 106620914291504848, guid: d60eb09d1e477cc45becfc0cbd367395,
         type: 3}
       propertyPath: skidTrailPrefab
