@@ -397,11 +397,27 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 106620914071757868, guid: d60eb09d1e477cc45becfc0cbd367395,
+        type: 3}
+      propertyPath: m_ForwardFriction.m_Stiffness
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 106620914071757868, guid: d60eb09d1e477cc45becfc0cbd367395,
+        type: 3}
+      propertyPath: m_SidewaysFriction.m_Stiffness
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 106620914291504848, guid: d60eb09d1e477cc45becfc0cbd367395,
         type: 3}
       propertyPath: skidSound
       value: 
       objectReference: {fileID: 106620914697748697}
+    - target: {fileID: 106620914291504848, guid: d60eb09d1e477cc45becfc0cbd367395,
+        type: 3}
+      propertyPath: skidTrailPrefab
+      value: 
+      objectReference: {fileID: 856444331044062652, guid: 198a63160dc3e04468decf5f3185fd70,
+        type: 3}
     - target: {fileID: 106620914291504849, guid: d60eb09d1e477cc45becfc0cbd367395,
         type: 3}
       propertyPath: m_RootOrder
@@ -461,6 +477,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Red Car
+      objectReference: {fileID: 0}
+    - target: {fileID: 106620914863106587, guid: d60eb09d1e477cc45becfc0cbd367395,
+        type: 3}
+      propertyPath: m_ForwardFriction.m_Stiffness
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 106620914863106587, guid: d60eb09d1e477cc45becfc0cbd367395,
+        type: 3}
+      propertyPath: m_SidewaysFriction.m_Stiffness
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 106620915002401534, guid: d60eb09d1e477cc45becfc0cbd367395,
+        type: 3}
+      propertyPath: m_ForwardFriction.m_Stiffness
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 106620915002401534, guid: d60eb09d1e477cc45becfc0cbd367395,
+        type: 3}
+      propertyPath: m_SidewaysFriction.m_Stiffness
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 106620915107777859, guid: d60eb09d1e477cc45becfc0cbd367395,
+        type: 3}
+      propertyPath: m_ForwardFriction.m_Stiffness
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 106620915107777859, guid: d60eb09d1e477cc45becfc0cbd367395,
+        type: 3}
+      propertyPath: m_SidewaysFriction.m_Stiffness
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d60eb09d1e477cc45becfc0cbd367395, type: 3}

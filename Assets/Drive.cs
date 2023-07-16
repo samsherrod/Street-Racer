@@ -12,6 +12,31 @@ public class Drive : MonoBehaviour
 
     public AudioSource skidSound;
 
+    public Transform skidTrailPrefab;
+    Transform[] skidTrails = new Transform[4];
+
+    /// <summary>
+    /// Creates a skid effect that intatiates the skidTrailPrefab. Its position is at the base of the wheel
+    /// and is childed to its wheel collider
+    /// </summary>
+    /// <param name="i"></param>
+    public void StartSkidTrail(int i)
+    {
+        if (skidTrails[i] == null) skidTrails[i] = Instantiate(skidTrailPrefab);
+
+        skidTrails[i].parent = WCs[i].transform;
+        skidTrails[i].localPosition = -Vector3.up * WCs[i].radius;
+    }
+
+    public void EndSkidTrail(int i)
+    {
+        if (skidTrails[i] == null) return;
+        Transform holder = skidTrails[i];
+        skidTrails[i] = null;
+        holder.parent = null;
+        Destroy(holder.gameObject, 30);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -53,6 +78,32 @@ public class Drive : MonoBehaviour
         }
     }
 
+    void CheckForSkid()
+    {
+        int numSkidding = 0;
+        for (int i = 0; i < 4; i++)
+        {
+            WheelHit wheelHit;
+            WCs[i].GetGroundHit(out wheelHit);
+
+            if (Mathf.Abs(wheelHit.forwardSlip) >= 0.4 || Mathf.Abs(wheelHit.sidewaysSlip) >= 0.4f)
+            {
+                numSkidding++;
+                if (!skidSound.isPlaying) skidSound.Play();
+                StartSkidTrail(i);
+            }
+            else
+            {
+                EndSkidTrail(i);
+            }
+        }
+
+        if (numSkidding == 0 && skidSound.isPlaying)
+        {
+            skidSound.Stop();
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -62,5 +113,7 @@ public class Drive : MonoBehaviour
         float b = Input.GetAxis("Jump");
 
         Go(a, s, b);
+
+        CheckForSkid();
     }
 }
