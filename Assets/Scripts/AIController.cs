@@ -5,16 +5,21 @@ using UnityEngine;
 public class AIController : MonoBehaviour
 {
     public Circuit circuit;
+    public float brakingSensitivity = 3f;
     Drive drive;
     public float steeringSensitivity = 0.01f;
     Vector3 target;
+    Vector3 nextTarget;
     int currentWP = 0;
+    float totalDistanceToTarget;
 
     // Start is called before the first frame update
     void Start()
     {
         drive = this.GetComponent<Drive>();
         target = circuit.waypoints[currentWP].transform.position;
+        nextTarget = circuit.waypoints[currentWP + 1].transform.position;
+        totalDistanceToTarget = Vector3.Distance(target, drive.rb.gameObject.transform.position);
     }
 
     // Update is called once per frame
@@ -23,13 +28,25 @@ public class AIController : MonoBehaviour
         // translates the target's coordinates into the space of the vehicle
         // the vehicle's rigid body becomes the origin and assigns it to the localTarget
         Vector3 localTarget = drive.rb.gameObject.transform.InverseTransformPoint(target);
+        Vector3 nextLocalTarget = drive.rb.gameObject.transform.InverseTransformPoint(nextTarget);
         float distanceToTarget = Vector3.Distance(target, drive.rb.gameObject.transform.position);
 
         float targetAngle = Mathf.Atan2(localTarget.x, localTarget.z) * Mathf.Rad2Deg;
+        float nextTargetAngle = Mathf.Atan2(nextLocalTarget.x, nextLocalTarget.z) * Mathf.Rad2Deg;
 
         float steer = Mathf.Clamp(targetAngle * steeringSensitivity, - 1, 1) * Mathf.Sign(drive.currentSpeed);
+
+        float distanceFactor = distanceToTarget / totalDistanceToTarget;
+        float speedFactor = drive.currentSpeed / drive.maxSpeed;
+
         float accel = 1f;
-        float brake = 0;
+
+        // when distance factor is 0, car has no braking
+        // when distance factor is 1, cas has full braking
+        // if distance factor is between 0 and 1, it will be somewhere between 
+        float brake = Mathf.Lerp((-1 - Mathf.Abs(nextTargetAngle)) * brakingSensitivity, 1 + speedFactor, 1 - distanceFactor);
+
+        Debug.Log("Brake" + brake + ", Accel: " + accel + ", Speed: " + drive.rb.velocity.magnitude + ", Time: " + Mathf.Round(Time.time) + " seconds");
 
         //if (distanceToTarget < 5)
         //{
@@ -47,6 +64,8 @@ public class AIController : MonoBehaviour
             if (currentWP >= circuit.waypoints.Length)
                 currentWP = 0;
             target = circuit.waypoints[currentWP].transform.position;
+            nextTarget = circuit.waypoints[currentWP + 1].transform.position;
+            totalDistanceToTarget = Vector3.Distance(target, drive.rb.gameObject.transform.position);
         }
 
         drive.CheckForSkid();
