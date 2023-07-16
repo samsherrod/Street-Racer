@@ -39,9 +39,9 @@ public class AIController : MonoBehaviour
         // the vehicle game object moves drives on its own
         drive.Go(accel, steer, brake);
 
-        // have a small buffer
+        // have a small threshold
         // make larger if car starts to circle waypoint
-        if (distanceToTarget < 2)
+        if (distanceToTarget < 4)
         {
             currentWP++;
             if (currentWP >= circuit.waypoints.Length)
