@@ -11,6 +11,7 @@ public class Drive : MonoBehaviour
     public float maxBrakeTorque = 500; // force acting in the opposition direction of the forward thrust
 
     public AudioSource skidSound;
+    public AudioSource highAccel;
 
     public Transform skidTrailPrefab;
     Transform[] skidTrails = new Transform[4];
@@ -19,6 +20,17 @@ public class Drive : MonoBehaviour
     ParticleSystem[] skidSmoke = new ParticleSystem[4];
 
     public GameObject brakeLight;
+    
+    public Rigidbody rb;
+    public float gearLength = 3;
+    public float currentSpeed { get { return rb.velocity.magnitude * gearLength;  } }
+    public float lowPitch = 1f;
+    public float highPitch = 6f;
+    public int numGears = 5;
+    float rpm;
+    int currentGear = 1;
+    float currentGearPerc;
+    public float maxSpeed = 200;
 
     /// <summary>
     /// Creates a skid effect that intatiates the skidTrailPrefab. Its position is at the base of the wheel
@@ -56,6 +68,30 @@ public class Drive : MonoBehaviour
         brakeLight.SetActive(false);
     }
 
+    void CalculateEngineSound()
+    {
+        float gearPercentage = (1 / (float)numGears);
+        float targetGearFactor = Mathf.InverseLerp(gearPercentage * currentGear, gearPercentage * (currentGear + 1),
+                                                   Mathf.Abs(currentSpeed / maxSpeed));
+        currentGearPerc = Mathf.Lerp(currentGearPerc, targetGearFactor, Time.deltaTime * 5f);
+
+        var gearNumFactor = currentGear / (float)numGears;
+        rpm = Mathf.Lerp(gearNumFactor, 1, currentGearPerc);
+
+        float speedPercentage = Mathf.Abs(currentSpeed / maxSpeed);
+        float upperGearMax = (1 / (float)numGears) * (currentGear + 1);
+        float downGearMax = (1 / (float)numGears) * currentGear;
+
+        if (currentGear > 0 && speedPercentage < downGearMax)
+            currentGear--;
+
+        if (speedPercentage > upperGearMax && (currentGear < (numGears - 1)))
+            currentGear++;
+
+        float pitch = Mathf.Lerp(lowPitch, highPitch, rpm);
+        highAccel.pitch = Mathf.Min(highPitch, pitch) * 0.25f;
+    }
+
     /// <summary>
     /// clamping the values accel values between -1 and 1 and then multiplies it by the torque
     /// to get the wheel collider's motor torque    /// </summary>
@@ -76,7 +112,11 @@ public class Drive : MonoBehaviour
         else 
             brakeLight.SetActive(false);
 
-        float thrustTorque = accel * torque;
+        // thrustTorque is what is actually speeding up the vehicle therefore if the car's
+        // current speed is less than the max speed, speed the car up
+        float thrustTorque = 0;
+        if (currentSpeed < maxSpeed)
+            thrustTorque =  accel * torque;
 
         for (int i = 0; i < 4; i++)
         {
@@ -139,5 +179,6 @@ public class Drive : MonoBehaviour
         Go(a, s, b);
 
         CheckForSkid();
+        CalculateEngineSound();
     }
 }
