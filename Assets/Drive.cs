@@ -25,6 +25,7 @@ public class Drive : MonoBehaviour
         if (skidTrails[i] == null) skidTrails[i] = Instantiate(skidTrailPrefab);
 
         skidTrails[i].parent = WCs[i].transform;
+        skidTrails[i].localRotation = Quaternion.Euler(90, 0, 0);
         skidTrails[i].localPosition = -Vector3.up * WCs[i].radius;
     }
 
@@ -34,6 +35,7 @@ public class Drive : MonoBehaviour
         Transform holder = skidTrails[i];
         skidTrails[i] = null;
         holder.parent = null;
+        holder.rotation = Quaternion.Euler(90, 0, 0);
         Destroy(holder.gameObject, 30);
     }
 
@@ -90,11 +92,11 @@ public class Drive : MonoBehaviour
             {
                 numSkidding++;
                 if (!skidSound.isPlaying) skidSound.Play();
-                StartSkidTrail(i);
+                //StartSkidTrail(i);
             }
             else
             {
-                EndSkidTrail(i);
+                //EndSkidTrail(i);
             }
         }
 
