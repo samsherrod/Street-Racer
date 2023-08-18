@@ -18,6 +18,8 @@ public class AIController : MonoBehaviour
     int currentTrackerWP = 0;
     public float lookAhead = 10;
 
+    float lastTimeMoving = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -58,8 +60,12 @@ public class AIController : MonoBehaviour
         }
     }
 
+    void ResetLayer()
+    {
+        drive.rb.gameObject.layer = 0;
+    }
+
     // Update is called once per frame
-    bool isJumping = false;
     void Update()
     {
         ProgressTracker();
@@ -67,6 +73,21 @@ public class AIController : MonoBehaviour
         // the vehicle's rigid body becomes the origin and assigns it to the localTarget
         Vector3 localTarget;
         float targetAngle;
+
+        if (drive.rb.velocity.magnitude > 1)
+        {
+            lastTimeMoving = Time.time;
+        }
+        
+        if (Time.time > lastTimeMoving + 4)
+        {
+            drive.rb.gameObject.transform.position = circuit.waypoints[currentTrackerWP].transform.position +
+                                                     Vector3.up * 2 +
+                                                     new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1));
+            tracker.transform.position = drive.rb.gameObject.transform.position;
+            drive.rb.gameObject.layer = 8;
+            Invoke("ResetLayer", 3);
+        }
 
         if (Time.time < drive.rb.GetComponent<AvoidDetector>().avoidtime)
         {
@@ -97,7 +118,8 @@ public class AIController : MonoBehaviour
             accel = Mathf.Lerp(0, 1 * accelSensitivity, 1 - cornerFactor);
         }
 
-        Debug.Log("Brake" + brake + ", Accel: " + accel + ", Speed: " + drive.rb.velocity.magnitude + ", Time: " + Mathf.Round(Time.time) + " seconds");
+        //Debug.Log("Brake" + brake + ", Accel: " + accel + ", Speed: " + drive.rb.velocity.magnitude + ", Time: " + Mathf.Round(Time.time) + " seconds");
+        Debug.Log("Brake" + brake + ", Accel: " + accel + ", Speed: " + drive.currentSpeed + ", Time: " + Mathf.Round(Time.time) + " seconds");
 
         drive.Go(accel, steer, brake);
 
