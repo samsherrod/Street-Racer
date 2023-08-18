@@ -28,6 +28,7 @@ public class AIController : MonoBehaviour
 
         tracker = GameObject.CreatePrimitive(PrimitiveType.Capsule);
         DestroyImmediate(tracker.GetComponent<Collider>());
+        tracker.GetComponent<MeshRenderer>().enabled = false;
         tracker.transform.position = drive.rb.gameObject.transform.position;
         tracker.transform.rotation = drive.rb.gameObject.transform.rotation;
     }

@@ -22,11 +22,12 @@ public class AltAIController : MonoBehaviour
     {
         float distanceToTarget = Vector3.Distance(target, this.transform.position);
         Vector3 direction = target - this.transform.position;
-        //this.transform.rotation = Quaternion.Slerp(this.transform.rotation,
-        //Quaternion.LookRotation(direction),
-        //Time.deltaTime * rotSpeed);
+        this.transform.rotation = Quaternion.Slerp(this.transform.rotation,
+        Quaternion.LookRotation(direction),
+        Time.deltaTime * rotSpeed);
 
-        this.transform.LookAt(target);
+        // Creates snapping effect - car instantly rotates to look at target upon colliding with waypoint
+        //this.transform.LookAt(target);
         this.transform.Translate(0, 0, speed * Time.deltaTime);
 
         if (distanceToTarget < accuracy)
