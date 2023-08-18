@@ -65,8 +65,20 @@ public class AIController : MonoBehaviour
         ProgressTracker();
         // translates the target's coordinates into the space of the vehicle
         // the vehicle's rigid body becomes the origin and assigns it to the localTarget
-        Vector3 localTarget = drive.rb.gameObject.transform.InverseTransformPoint(tracker.transform.position);
-        float targetAngle = Mathf.Atan2(localTarget.x, localTarget.z) * Mathf.Rad2Deg;
+        Vector3 localTarget;
+        float targetAngle;
+
+        if (Time.time < drive.rb.GetComponent<AvoidDetector>().avoidtime)
+        {
+            localTarget = tracker.transform.right * drive.rb.GetComponent<AvoidDetector>().avoidPath;
+        }
+        else
+        {
+            localTarget = drive.rb.gameObject.transform.InverseTransformPoint(tracker.transform.position);
+        }
+
+        targetAngle = Mathf.Atan2(localTarget.x, localTarget.z) * Mathf.Rad2Deg;
+
         float steer = Mathf.Clamp(targetAngle * steeringSensitivity, - 1, 1) * Mathf.Sign(drive.currentSpeed);
         float speedFactor = drive.currentSpeed / drive.maxSpeed;
 
