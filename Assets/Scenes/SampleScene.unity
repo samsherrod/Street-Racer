@@ -1933,7 +1933,7 @@ PrefabInstance:
     - target: {fileID: 106620914071757870, guid: d60eb09d1e477cc45becfc0cbd367395,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.7
+      value: -0.824
       objectReference: {fileID: 0}
     - target: {fileID: 106620914291504849, guid: d60eb09d1e477cc45becfc0cbd367395,
         type: 3}
@@ -2000,20 +2000,45 @@ PrefabInstance:
       propertyPath: circuit
       value: 
       objectReference: {fileID: 1584066789}
+    - target: {fileID: 106620914697748697, guid: d60eb09d1e477cc45becfc0cbd367395,
+        type: 3}
+      propertyPath: accelSensitivity
+      value: 0.01
+      objectReference: {fileID: 0}
     - target: {fileID: 106620914863106589, guid: d60eb09d1e477cc45becfc0cbd367395,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.7
+      value: -0.824
       objectReference: {fileID: 0}
     - target: {fileID: 106620915002401520, guid: d60eb09d1e477cc45becfc0cbd367395,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.7
+      value: -0.824
       objectReference: {fileID: 0}
     - target: {fileID: 106620915107777861, guid: d60eb09d1e477cc45becfc0cbd367395,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.7
+      value: -0.824
+      objectReference: {fileID: 0}
+    - target: {fileID: 4900057022685623308, guid: d60eb09d1e477cc45becfc0cbd367395,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4900057024263633363, guid: d60eb09d1e477cc45becfc0cbd367395,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4900057024411413489, guid: d60eb09d1e477cc45becfc0cbd367395,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4900057024439650641, guid: d60eb09d1e477cc45becfc0cbd367395,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d60eb09d1e477cc45becfc0cbd367395, type: 3}
