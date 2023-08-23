@@ -8,7 +8,7 @@ public class Drive : MonoBehaviour
     public GameObject[] Wheels;
     public float torque = 200; // rotational force
     public float maxSteerAngle = 30; // the maximum angle the wheels can rotate
-    public float maxBrakeTorque = 500; // force acting in the opposition direction of the forward thrust
+    public float maxBrakeTorque = 500; // force acting in the opposite direction of the forward thrust
 
     public AudioSource skidSound;
     public AudioSource highAccel;

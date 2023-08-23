@@ -68,6 +68,12 @@ public class AIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!RaceMonitor.racing)
+        {
+            lastTimeMoving = Time.time;
+            return;
+        }
+
         ProgressTracker();
         // translates the target's coordinates into the space of the vehicle
         // the vehicle's rigid body becomes the origin and assigns it to the localTarget
@@ -119,7 +125,7 @@ public class AIController : MonoBehaviour
         }
 
         //Debug.Log("Brake" + brake + ", Accel: " + accel + ", Speed: " + drive.rb.velocity.magnitude + ", Time: " + Mathf.Round(Time.time) + " seconds");
-        Debug.Log("Brake" + brake + ", Accel: " + accel + ", Speed: " + drive.currentSpeed + ", Time: " + Mathf.Round(Time.time) + " seconds");
+        //Debug.Log("Brake" + brake + ", Accel: " + accel + ", Speed: " + drive.currentSpeed + ", Time: " + Mathf.Round(Time.time) + " seconds");
 
         drive.Go(accel, steer, brake);
 
