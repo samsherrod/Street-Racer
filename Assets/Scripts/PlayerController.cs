@@ -52,17 +52,25 @@ public class PlayerController : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ds.rb.gameObject.transform.position, -Vector3.up, out hit, 10))
         {
-            // if ray is not hitting track layer, ignore the collision
-            if (hit.collider.gameObject.layer != 9)
-            {
-                //Physics.IgnoreCollision(hit.collider, carBody.GetComponent<Collider>());
-                Debug.Log("Car game object is colliding with " + hit.collider.gameObject.name + " on layer " + hit.collider.gameObject.layer);
-            }
+            //// if ray is not hitting track layer, ignore the collision
+            //if (!hit.collider.gameObject.CompareTag("road"))
+            //{
+            //    //Physics.IgnoreCollision(hit.collider, carBody.GetComponent<Collider>());
+            //    Debug.Log(gameObject.name + " is colliding with " + hit.collider.gameObject.name);
+            //}
             // if ray is hitting track layer
-            if (hit.collider.gameObject.layer == 9)
-            {
-                Debug.Log("Car game object is colliding with " + hit.collider.gameObject.name + " on layer " + hit.collider.gameObject.layer);
+            if (hit.collider.gameObject.CompareTag("road"))
+
+                lastPosition = ds.rb.gameObject.transform.position;
+                lastRotation = ds.rb.gameObject.transform.rotation;
+                Debug.Log(gameObject.name + " is colliding with " + hit.collider.gameObject.name);
             }
+        if (Time.time > lastTimeMoving + 4)
+        {
+            ds.rb.gameObject.transform.position = lastPosition;
+            ds.rb.gameObject.transform.rotation = lastRotation;
+            ds.rb.gameObject.layer = 8;
+            Invoke("ResetLayer", 3);
         }
         Debug.DrawRay(ds.rb.gameObject.transform.position, -Vector3.up, Color.red);
     }
