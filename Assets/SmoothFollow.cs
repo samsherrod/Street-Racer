@@ -29,10 +29,6 @@ public class SmoothFollow : MonoBehaviour
         //    // sets firstPlayer to whatever is saved in PlayerPrefs
         //    firstPlayer = PlayerPrefs.GetInt("FirstPlayer");
         //}
-
-        wantedRotationAngle = target.eulerAngles.y;
-        wantedHeight = target.position.y + height;
-        currentRotation = Quaternion.Euler(0, wantedRotationAngle, 0);
     }
 
     // Update is called once per frame
@@ -64,9 +60,9 @@ public class SmoothFollow : MonoBehaviour
 
     void ToggleInstantCameraSwitch()
     {
-        float wantedRotationAngle = target.eulerAngles.y;
-        float wantedHeight = target.position.y + height;
-        Quaternion currentRotation = Quaternion.Euler(0, wantedRotationAngle, 0);
+        wantedRotationAngle = target.eulerAngles.y;
+        wantedHeight = target.position.y + height;
+        currentRotation = Quaternion.Euler(0, wantedRotationAngle, 0);
 
         if (target == null)
             return;
@@ -91,8 +87,8 @@ public class SmoothFollow : MonoBehaviour
 
     void ToggleLerpCameraSwitch()
     {
-        float wantedRotationAngle = target.eulerAngles.y;
-        float wantedHeight = target.position.y + height;
+        wantedRotationAngle = target.eulerAngles.y;
+        wantedHeight = target.position.y + height;
 
         float currentRotationAngle = transform.eulerAngles.y;
         float currentHeight = transform.position.y;
