@@ -63,7 +63,7 @@ public class PlayerController : MonoBehaviour
 
                 lastPosition = ds.rb.gameObject.transform.position;
                 lastRotation = ds.rb.gameObject.transform.rotation;
-                Debug.Log(gameObject.name + " is colliding with " + hit.collider.gameObject.name);
+                //Debug.Log(gameObject.name + " is colliding with " + hit.collider.gameObject.name);
             }
         if (Time.time > lastTimeMoving + 4)
         {

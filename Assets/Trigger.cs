@@ -1,0 +1,15 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Trigger : MonoBehaviour
+{
+    [SerializeField] int coinCount = 0;
+
+    private void OnTriggerEnter(Collider other)
+    {
+        //Debug.Log(this.name + " collided with " + other.name);
+        coinCount++;
+        Debug.Log("CoinCount: " + coinCount);
+    }
+}
