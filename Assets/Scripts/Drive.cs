@@ -34,6 +34,9 @@ public class Drive : MonoBehaviour
     public float maxSpeed = 200;
 
     public GameObject playerNamePrefab;
+    public Renderer carMesh;
+
+    string[] aiNames = { "Bojador", "Rosa", "Fiena", "Ela", "Quarteza" };
 
     /// <summary>
     /// Creates a skid effect that intatiates the skidTrailPrefab. Its position is at the base of the wheel
@@ -71,9 +74,19 @@ public class Drive : MonoBehaviour
         brakeLight.SetActive(false);
 
         // Instantiate the playerName text UI prefab with the appropriate text above each car
+        // sets the renderer component for the NameUIController to this object's car body mesh
         GameObject playerName = Instantiate(playerNamePrefab);
         playerName.GetComponent<NameUIController>().target = rb.gameObject.transform;
-        playerName.GetComponent<Text>().text = "Player Name";
+
+        if(this.GetComponent<AIController>() != null)
+        {
+            playerName.GetComponent<Text>().text = aiNames[Random.Range(0, aiNames.Length)];
+        }
+        else
+        {
+            playerName.GetComponent<Text>().text = "Sam";
+        }
+        playerName.GetComponent<NameUIController>().carRend = carMesh;
     }
 
     public void CalculateEngineSound()
