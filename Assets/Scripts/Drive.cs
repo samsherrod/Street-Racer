@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Drive : MonoBehaviour
 {
@@ -31,6 +32,8 @@ public class Drive : MonoBehaviour
     int currentGear = 1;
     float currentGearPerc;
     public float maxSpeed = 200;
+
+    public GameObject playerNamePrefab;
 
     /// <summary>
     /// Creates a skid effect that intatiates the skidTrailPrefab. Its position is at the base of the wheel
@@ -66,6 +69,11 @@ public class Drive : MonoBehaviour
         }
 
         brakeLight.SetActive(false);
+
+        // Instantiate the playerName text UI prefab with the appropriate text above each car
+        GameObject playerName = Instantiate(playerNamePrefab);
+        playerName.GetComponent<NameUIController>().target = rb.gameObject.transform;
+        playerName.GetComponent<Text>().text = "Player Name";
     }
 
     public void CalculateEngineSound()
