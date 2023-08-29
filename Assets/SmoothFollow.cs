@@ -12,6 +12,7 @@ public class SmoothFollow : MonoBehaviour
     public float rotationDamping = 2.0f;
     public float fpLookAtDistance = 3;
     public float fpPosOffset = 0.4f;
+    public float fpHeight = 0.5f;
 
     float wantedRotationAngle;
     float wantedHeight;
@@ -67,13 +68,9 @@ public class SmoothFollow : MonoBehaviour
         if (target == null)
             return;
 
-        // toggle first player camera perspective
         if (firstPlayer == 1)
         {
-            // move camera 0.4 meters behind the target's position on the z axis and 1 meter up
-            transform.position = target.position - target.forward * fpPosOffset + target.up;
-            // keeps the camera looking straight and ahead
-            transform.LookAt(target.position + target.forward * fpLookAtDistance);
+            ToggleFirstPersonCamera();
         }
         // toggle third person camera perspective (2 is in front, 3 is behind of car)
         else if (firstPlayer == 2 || firstPlayer == 3)
@@ -103,10 +100,7 @@ public class SmoothFollow : MonoBehaviour
         // toggle first player camera perspective
         if (firstPlayer == 1)
         {
-            // move camera 0.4 meters behind the target's position on the z axis and 1 meter up
-            transform.position = target.position - target.forward * fpPosOffset + target.up;
-            // keeps the camera looking straight and ahead
-            transform.LookAt(target.position + target.forward * fpLookAtDistance);
+            ToggleFirstPersonCamera();
         }
         // toggle third person camera perspective to look forward
         else if (firstPlayer == 2)
@@ -135,5 +129,14 @@ public class SmoothFollow : MonoBehaviour
                                 transform.position.z);
 
         transform.LookAt(target);
+    }
+
+    // toggle first player camera perspective
+    void ToggleFirstPersonCamera()
+    {
+        // move camera 0.4 meters behind the target's position on the z axis and 1 meter up
+        transform.position = target.position - target.forward * fpPosOffset + new Vector3(0, fpHeight, 0);
+        // keeps the camera looking straight and ahead
+        transform.LookAt(target.position + target.forward * fpLookAtDistance);
     }
 }
