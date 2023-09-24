@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/EasyRoads3D scenes/test scene.unity
+    guid: c72c9c2ab43b0e94aa321290470ebbd5
   m_configObjects: {}

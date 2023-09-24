@@ -9,6 +9,7 @@ TagManager:
   - terrain
   - HUD
   - checkpoint
+  - AI
   layers:
   - Default
   - TransparentFX
