@@ -19,7 +19,7 @@ public class NameUIController : MonoBehaviour
         // orientation rather than its global orientation.
         // https://docs.unity3d.com/ScriptReference/Transform.SetParent.html
 
-        this.transform.SetParent(GameObject.Find("Canvas").GetComponent<Transform>(), false);
+        this.transform.SetParent(GameObject.Find("Game UI Canvas").GetComponent<Transform>(), false);
         playerName = this.GetComponent<Text>();
         canvasGroup = this.GetComponent<CanvasGroup>();
     }
