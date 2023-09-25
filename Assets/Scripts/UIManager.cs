@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
 
     public static bool allowPause; // set to false across classes if you need to prevent pausing
     [SerializeField] private TextMeshProUGUI speedUI;
+    [SerializeField] private TextMeshProUGUI lapUI;
     [SerializeField] private GameObject crossFade;
     [SerializeField] private Animator sceneTransition;
     [SerializeField] private float transitionTime = 1f;
@@ -66,6 +67,11 @@ public class UIManager : MonoBehaviour
     public void SetSpeed(float speed)
     {
         this.speedUI.text = (speed.ToString());
+    }
+
+    public void SetLap(int lap)
+    {
+        this.lapUI.text = lap.ToString();
     }
 
 

@@ -186,6 +186,7 @@ GameObject:
   - component: {fileID: 2223687762752627916}
   - component: {fileID: 2223687762752627915}
   - component: {fileID: 2223687762752627908}
+  - component: {fileID: 2392659463482828059}
   - component: {fileID: 2223687762752627909}
   m_Layer: 0
   m_Name: CarBody
@@ -526,6 +527,20 @@ MonoBehaviour:
   wheelLBack: {fileID: 2223687762966456389}
   wheelRBack: {fileID: 2223687762651084870}
   COM: {fileID: 2223687764473894212}
+--- !u!114 &2392659463482828059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2223687762752627911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27c18d7e2323e234492556a30119f4be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lap: 0
+  checkPoint: 1
 --- !u!114 &2223687762752627909
 MonoBehaviour:
   m_ObjectHideFlags: 0

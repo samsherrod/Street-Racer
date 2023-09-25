@@ -23,6 +23,8 @@ public class AIController : MonoBehaviour
 
     Scene scene;
 
+    CheckPointManager cpm;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -93,13 +95,22 @@ public class AIController : MonoBehaviour
         {
             lastTimeMoving = Time.time;
         }
-        
+
+        // reset vehicle to last checkpoint
         if (Time.time > lastTimeMoving + 4)
         {
+            if (cpm == null)
+            {
+                cpm = drive.rb.GetComponent<CheckPointManager>();
+            }
+
+            // lift up a bit to avoid getting stuck in ground
+            drive.rb.gameObject.transform.SetPositionAndRotation(cpm.lastCheckpoint.transform.position + Vector3.up * 2, cpm.lastCheckpoint.transform.rotation);
+
             drive.rb.gameObject.transform.position = circuit.waypoints[currentTrackerWP].transform.position +
                                                      Vector3.up * 2 +
                                                      new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1));
-            tracker.transform.position = drive.rb.gameObject.transform.position;
+            tracker.transform.position = cpm.lastCheckpoint.transform.position;
             drive.rb.gameObject.layer = 8;
             Invoke("ResetLayer", 3);
         }
