@@ -541,6 +541,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lap: 0
   checkPoint: 1
+  lastCheckpoint: {fileID: 0}
+  uIManager: {fileID: 0}
 --- !u!114 &2223687762752627909
 MonoBehaviour:
   m_ObjectHideFlags: 0
