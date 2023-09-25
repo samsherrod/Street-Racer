@@ -986,7 +986,7 @@ GameObject:
   - component: {fileID: 2223687763535319948}
   - component: {fileID: 2223687763535319949}
   m_Layer: 10
-  m_Name: Quad
+  m_Name: Minimap Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1032,7 +1032,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bf83e901f3ce03343aa59615956f2366, type: 2}
+  - {fileID: 2100000, guid: 321110bb925d56343b65293076d0b221, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1409,6 +1409,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carBody: {fileID: 2223687762752627911}
+  uIManager: {fileID: 0}
 --- !u!1 &2223687764259995364
 GameObject:
   m_ObjectHideFlags: 0
@@ -1501,7 +1502,6 @@ GameObject:
   - component: {fileID: 2223687764270547766}
   - component: {fileID: 2223687764270547764}
   - component: {fileID: 2223687764270547765}
-  - component: {fileID: 2223687764270547771}
   m_Layer: 0
   m_Name: Trigger
   m_TagString: Untagged
@@ -1549,20 +1549,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.9840143, y: 1.0152254, z: 0.9188148}
   m_Center: {x: 0.07352793, y: 0.36300373, z: -0.35344565}
---- !u!114 &2223687764270547771
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2223687764270547767}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e20355b70da24e447b21335a94a7ad17, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coinCount: 0
-  uIManager: {fileID: 0}
 --- !u!1 &2223687764390257838
 GameObject:
   m_ObjectHideFlags: 0
