@@ -24,6 +24,8 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private GameObject controlsPage;
     [Tooltip("The credits page of the pause menu")]
     [SerializeField] private GameObject creditsPage;
+    [Tooltip("The how to play page of the pause menu")]
+    [SerializeField] private GameObject howToPlayPage;
 
     Scene scene;
 
@@ -59,9 +61,10 @@ public class PauseMenu : MonoBehaviour
         if (pauseMenuUI != null)
         {
             mainPage.SetActive(false);
-            controlsPage.SetActive(false);
+            if (controlsPage) controlsPage.SetActive(false);
             pauseMenuUI.SetActive(false);
-            creditsPage.SetActive(false);
+            if (creditsPage) creditsPage.SetActive(false);
+            if (howToPlayPage) howToPlayPage.SetActive(false);
         }
         Time.timeScale = 1f;
         GameIsPaused = false;
@@ -87,8 +90,9 @@ public class PauseMenu : MonoBehaviour
     public void OpenMenuPage()
     {
         mainPage.SetActive(true);
-        controlsPage.SetActive(false);
-        creditsPage.SetActive(false);
+        if (controlsPage) controlsPage.SetActive(false);
+        if (creditsPage) creditsPage.SetActive(false);
+        if (howToPlayPage) howToPlayPage.SetActive(false);
     }
 
     /// <summary>
@@ -97,8 +101,9 @@ public class PauseMenu : MonoBehaviour
     public void OpenControlsPage()
     {
         mainPage.SetActive(false);
-        controlsPage.SetActive(true);
-        creditsPage.SetActive(false);
+        if (controlsPage) controlsPage.SetActive(true);
+        if (creditsPage) creditsPage.SetActive(false);
+        if (howToPlayPage) howToPlayPage.SetActive(false);
     }
 
     /// <summary>
@@ -107,8 +112,20 @@ public class PauseMenu : MonoBehaviour
     public void OpenCreditsPage()
     {
         mainPage.SetActive(false);
-        controlsPage.SetActive(false);
-        creditsPage.SetActive(true);
+        if (controlsPage) controlsPage.SetActive(false);
+        if (creditsPage) creditsPage.SetActive(true);
+        if (howToPlayPage) howToPlayPage.SetActive(false);
+    }
+
+    /// <summary>
+    /// Turns the main page off and opens the controls screen page
+    /// </summary>
+    public void OpenHowToPlayPage()
+    {
+        mainPage.SetActive(false);
+        if (controlsPage) controlsPage.SetActive(false);
+        if (creditsPage) creditsPage.SetActive(false);
+        if (howToPlayPage) howToPlayPage.SetActive(true);
     }
 
     /// <summary>
