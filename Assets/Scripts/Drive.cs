@@ -75,18 +75,18 @@ public class Drive : MonoBehaviour
 
         // Instantiate the playerName text UI prefab with the appropriate text above each car
         // sets the renderer component for the NameUIController to this object's car body mesh
-        GameObject playerName = Instantiate(playerNamePrefab);
-        playerName.GetComponent<NameUIController>().target = rb.gameObject.transform;
+        //GameObject playerName = Instantiate(playerNamePrefab);
+        //playerName.GetComponent<NameUIController>().target = rb.gameObject.transform;
 
-        if(this.GetComponent<AIController>() != null)
-        {
-            playerName.GetComponent<Text>().text = aiNames[Random.Range(0, aiNames.Length)];
-        }
-        else
-        {
-            playerName.GetComponent<Text>().text = "Sam";
-        }
-        playerName.GetComponent<NameUIController>().carRend = carMesh;
+        //if(this.GetComponent<AIController>() != null)
+        //{
+        //    playerName.GetComponent<Text>().text = aiNames[Random.Range(0, aiNames.Length)];
+        //}
+        //else
+        //{
+        //    playerName.GetComponent<Text>().text = "Sam";
+        //}
+        //playerName.GetComponent<NameUIController>().carRend = carMesh;
     }
 
     public void CalculateEngineSound()

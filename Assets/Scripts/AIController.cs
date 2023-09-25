@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AIController : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class AIController : MonoBehaviour
 
     float lastTimeMoving = 0;
 
+    Scene scene;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +36,8 @@ public class AIController : MonoBehaviour
         tracker.GetComponent<MeshRenderer>().enabled = false;
         tracker.transform.position = drive.rb.gameObject.transform.position;
         tracker.transform.rotation = drive.rb.gameObject.transform.rotation;
+
+        scene = SceneManager.GetActiveScene();
     }
 
     /// <summary>
@@ -68,10 +73,14 @@ public class AIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!RaceMonitor.racing)
+        // if scene is not the main menu, show the countdown, otherwise countdown should be missing if it's the main menu
+        if (scene != SceneManager.GetSceneByBuildIndex(0))
         {
-            lastTimeMoving = Time.time;
-            return;
+            if (!RaceMonitor.racing)
+            {
+                lastTimeMoving = Time.time;
+                return;
+            }
         }
 
         ProgressTracker();
