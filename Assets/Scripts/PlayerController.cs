@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     Quaternion lastRotation;
     [SerializeField] private GameObject carBody;
 
+    [SerializeField] UIManager uIManager;
+
     void ResetLayer()
     {
         ds.rb.gameObject.layer = 0;
@@ -43,6 +45,8 @@ public class PlayerController : MonoBehaviour
 
         ds.CheckForSkid();
         ds.CalculateEngineSound();
+
+        DisplaySpeed();
     }
 
     // TODO - Check other ground types to change friction such as on grass vs track
@@ -73,5 +77,12 @@ public class PlayerController : MonoBehaviour
             Invoke("ResetLayer", 3);
         }
         Debug.DrawRay(ds.rb.gameObject.transform.position, -Vector3.up, Color.red);
+    }
+
+    void DisplaySpeed()
+    {
+        float speed = ds.currentSpeed;
+        int convertedSpeed = (int)speed;
+        uIManager.SetSpeed(convertedSpeed);
     }
 }

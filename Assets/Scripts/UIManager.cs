@@ -11,10 +11,12 @@ public class UIManager : MonoBehaviour
     public static UIManager instance = null;
 
     public static bool allowPause; // set to false across classes if you need to prevent pausing
-    [SerializeField] private TextMeshProUGUI scoreUI;
+    [SerializeField] private TextMeshProUGUI speedUI;
     [SerializeField] private GameObject crossFade;
     [SerializeField] private Animator sceneTransition;
     [SerializeField] private float transitionTime = 1f;
+    
+    private Drive playerDrive;
 
     private void Awake()
     {
@@ -48,6 +50,8 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
+        playerDrive = GameObject.FindGameObjectWithTag("Player").GetComponent<Drive>();
+
         Scene scene = SceneManager.GetActiveScene();
         if(scene.name == "0_MainMenu")
         {
@@ -59,10 +63,12 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void SetScoreCount(int score)
+    public void SetSpeed(float speed)
     {
-        scoreUI.text = ("Score: " + score.ToString());
+        this.speedUI.text = (speed.ToString());
     }
+
+
 
     /// <summary>
     /// Loads the scene with the same name as the sceneName paramater.

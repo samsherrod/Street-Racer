@@ -1092,6 +1092,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6443326236631968383, guid: 6707345e6a3504445983528997cd2ef3,
+        type: 3}
+      propertyPath: maxSpeed
+      value: 75
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6707345e6a3504445983528997cd2ef3, type: 3}
 --- !u!4 &246718325 stripped
@@ -1865,22 +1870,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1173919965, guid: ac1770d97fa65324288ffe09aa197684, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 700
-      objectReference: {fileID: 0}
-    - target: {fileID: 1173919965, guid: ac1770d97fa65324288ffe09aa197684, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 700
-      objectReference: {fileID: 0}
-    - target: {fileID: 1173919965, guid: ac1770d97fa65324288ffe09aa197684, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 1173919966, guid: ac1770d97fa65324288ffe09aa197684, type: 3}
-      propertyPath: m_Color.a
-      value: 0.78431374
-      objectReference: {fileID: 0}
     - target: {fileID: 409836111078767561, guid: ac1770d97fa65324288ffe09aa197684,
         type: 3}
       propertyPath: m_Pivot.x
@@ -71011,6 +71000,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2223687764229850170, guid: e78c0719311a9ba42bbc04aa51a0aa68,
+        type: 3}
+      propertyPath: uIManager
+      value: 
+      objectReference: {fileID: 1985873308}
     - target: {fileID: 2223687764229850171, guid: e78c0719311a9ba42bbc04aa51a0aa68,
         type: 3}
       propertyPath: m_Name
@@ -71119,6 +71113,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6443326236631968383, guid: 6707345e6a3504445983528997cd2ef3,
+        type: 3}
+      propertyPath: maxSpeed
+      value: 150
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6707345e6a3504445983528997cd2ef3, type: 3}

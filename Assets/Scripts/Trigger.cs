@@ -11,8 +11,6 @@ public class Trigger : MonoBehaviour
     {
         //Debug.Log(this.name + " collided with " + other.name);
         coinCount++;
-        uIManager.SetScoreCount(coinCount);
-
-        Debug.Log("CoinCount: " + coinCount);
+        //Debug.Log("CoinCount: " + coinCount);
     }
 }
